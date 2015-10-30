@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="broadcast_live_banner_width">190dp</dimen>
+    <dimen name="status_bar_margin">0dp</dimen>
+
+</resources>

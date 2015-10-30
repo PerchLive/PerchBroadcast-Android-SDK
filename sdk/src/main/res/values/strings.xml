@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PerchBroadcast</string>
+
+    <string name="live">LIVE</string>
+    <string name="effects_chooser_title">Effects</string>
+
+</resources>
