@@ -1,0 +1,21 @@
+language: android
+android:
+  update-sdk: true
+  components:
+    - platform-tools
+    - build-tools-23.0.2
+    - android-23
+    - extra-android-m2repository
+    - sys-img-armeabi-v7a-android-23
+
+#before_script:
+#  - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
+#  - emulator -avd test -no-skin -no-audio -no-window &
+#  - bash ./android-wait-for-emulator.sh
+#  - adb shell input keyevent 82 &
+
+script:
+  - ./gradlew assembleDebug
+  # Currently only builds, does not run tests.
+  # Enable testing with './gradlew connectedCheck'
+  # once I figure out this emulator business
