@@ -1,4 +1,4 @@
-//package pro.dbro.perchbroadcast.sdk.activity;
+//package com.perchlive.broadcast.sdk.activity;
 //
 //import android.os.Bundle;
 //import android.view.KeyEvent;

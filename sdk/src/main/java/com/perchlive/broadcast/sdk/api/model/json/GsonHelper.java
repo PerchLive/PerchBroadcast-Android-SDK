@@ -1,4 +1,4 @@
-package pro.dbro.perchbroadcast.sdk.api.model.json;
+package com.perchlive.broadcast.sdk.api.model.json;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -6,7 +6,7 @@ import com.google.gson.GsonBuilder;
 
 import java.util.Date;
 
-import pro.dbro.perchbroadcast.sdk.api.model.typeadapter.StreamDateTypeAdapter;
+import com.perchlive.broadcast.sdk.api.model.typeadapter.StreamDateTypeAdapter;
 
 /**
  * Created by dbro on 10/29/15.

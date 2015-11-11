@@ -1,4 +1,4 @@
-package pro.dbro.perchbroadcast.sdk.location;
+package com.perchlive.broadcast.sdk.location;
 
 import android.content.Context;
 import android.location.Location;

@@ -1,4 +1,4 @@
-package pro.dbro.perchbroadcast;
+package com.perchlive.broadcast;
 
 import com.google.gson.Gson;
 
@@ -6,11 +6,11 @@ import org.junit.Test;
 
 import java.util.Date;
 
-import pro.dbro.perchbroadcast.sdk.api.model.S3Endpoint;
-import pro.dbro.perchbroadcast.sdk.api.model.S3StreamStartResponse;
-import pro.dbro.perchbroadcast.sdk.api.model.S3StreamStopResponse;
-import pro.dbro.perchbroadcast.sdk.api.model.json.GsonHelper;
-import pro.dbro.perchbroadcast.sdk.api.model.typeadapter.StreamDateTypeAdapter;
+import com.perchlive.broadcast.sdk.api.model.S3Endpoint;
+import com.perchlive.broadcast.sdk.api.model.S3StreamStartResponse;
+import com.perchlive.broadcast.sdk.api.model.S3StreamStopResponse;
+import com.perchlive.broadcast.sdk.api.model.json.GsonHelper;
+import com.perchlive.broadcast.sdk.api.model.typeadapter.StreamDateTypeAdapter;
 
 import static org.junit.Assert.*;
 

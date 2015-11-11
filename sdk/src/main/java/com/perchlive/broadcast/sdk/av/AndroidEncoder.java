@@ -9,7 +9,7 @@ import android.util.Log;
 
 import java.nio.ByteBuffer;
 
-import static pro.dbro.perchbroadcast.AndroidUtil.isKitKat;
+import static com.perchlive.broadcast.AndroidUtil.isKitKat;
 
 /**
  * @hide

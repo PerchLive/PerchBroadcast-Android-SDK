@@ -6,10 +6,10 @@ import java.io.File;
 import java.util.Map;
 import java.util.UUID;
 
-import static pro.dbro.perchbroadcast.AndroidUtil.isKitKat;
+import static com.perchlive.broadcast.sdk.AndroidUtil.isKitKat;
 
 /**
- * Configuration information for a Broadcasting or Recording session.
+ * Configuration information for a Recording session.
  * Includes meta data, video + audio encoding
  * and muxing parameters
  */
@@ -17,13 +17,13 @@ public class SessionConfig {
 
     private final VideoEncoderConfig mVideoConfig;
     private final AudioEncoderConfig mAudioConfig;
-    private File mOutputDirectory;
-    private final UUID mUUID;
-    private Muxer mMuxer;
-    private boolean mConvertVerticalVideo;
-    private boolean mIsAdaptiveBitrate;
-    private boolean mAttachLocation;
-    private int mHlsSegmentDuration;
+    private       File               mOutputDirectory;
+    private final UUID               mUUID;
+    private       Muxer              mMuxer;
+    private       boolean            mConvertVerticalVideo;
+    private       boolean            mIsAdaptiveBitrate;
+    private       boolean            mAttachLocation;
+    private       int                mHlsSegmentDuration;
 
     public SessionConfig(@NonNull File rootDirectory) {
         mVideoConfig = new VideoEncoderConfig(1280, 720, 2 * 1000 * 1000);
@@ -31,8 +31,8 @@ public class SessionConfig {
 
         mUUID = UUID.randomUUID();
 
-        File rootDir = rootDirectory;
-        File outputDir = new File(rootDir, mUUID.toString());
+        File rootDir    = rootDirectory;
+        File outputDir  = new File(rootDir, mUUID.toString());
         File outputFile = new File(outputDir, String.format("kf_%d.m3u8", System.currentTimeMillis()));
         outputDir.mkdir();
         mMuxer = FFmpegMuxer.create(outputFile.getAbsolutePath(), Muxer.Format.MPEG4);
@@ -141,15 +141,15 @@ public class SessionConfig {
 
         private Muxer mMuxer;
 
-        private File mOutputDirectory;
-        private UUID mUUID;
-        private String mTitle;
-        private String mDescription;
+        private File    mOutputDirectory;
+        private UUID    mUUID;
+        private String  mTitle;
+        private String  mDescription;
         private boolean mPrivate;
         private boolean mAttachLocation;
         private boolean mConvertVerticalVideo;
         private boolean mAdaptiveStreaming;
-        private Map mExtraInfo;
+        private Map     mExtraInfo;
 
         private int mHlsSegmentDuration;
 
@@ -214,9 +214,9 @@ public class SessionConfig {
          * @return a File pointing to /path/UUID/filename.ext
          */
         private String createRecordingPath(String outputPath) {
-            File desiredFile = new File(outputPath);
+            File   desiredFile     = new File(outputPath);
             String desiredFilename = desiredFile.getName();
-            File outputDir = new File(desiredFile.getParent(), mUUID.toString());
+            File   outputDir       = new File(desiredFile.getParent(), mUUID.toString());
             mOutputDirectory = outputDir;
             outputDir.mkdirs();
             return new File(outputDir, desiredFilename).getAbsolutePath();
@@ -303,7 +303,7 @@ public class SessionConfig {
         }
 
         public Builder withAudioChannels(int numChannels) {
-            if(!(numChannels == 0 || numChannels == 1)) {
+            if (!(numChannels == 0 || numChannels == 1)) {
                 throw new IllegalArgumentException("Illegal number of audio channels");
             }
 

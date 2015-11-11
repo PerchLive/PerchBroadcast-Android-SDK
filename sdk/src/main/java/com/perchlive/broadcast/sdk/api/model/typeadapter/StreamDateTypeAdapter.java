@@ -1,4 +1,4 @@
-package pro.dbro.perchbroadcast.sdk.api.model.typeadapter;
+package com.perchlive.broadcast.sdk.api.model.typeadapter;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;

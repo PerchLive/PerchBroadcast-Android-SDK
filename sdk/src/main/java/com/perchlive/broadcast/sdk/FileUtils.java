@@ -15,7 +15,7 @@
  *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package pro.dbro.perchbroadcast;
+package com.perchlive.broadcast;
 
 import android.content.Context;
 import android.os.Environment;

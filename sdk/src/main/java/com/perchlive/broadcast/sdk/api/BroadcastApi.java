@@ -1,8 +1,8 @@
-package pro.dbro.perchbroadcast.sdk.api;
+package com.perchlive.broadcast.sdk.api;
 
-import pro.dbro.perchbroadcast.sdk.api.model.S3StreamStartResponse;
-import pro.dbro.perchbroadcast.sdk.api.model.S3StreamStopResponse;
-import pro.dbro.perchbroadcast.sdk.api.model.json.GsonHelper;
+import com.perchlive.broadcast.sdk.api.model.S3StreamStartResponse;
+import com.perchlive.broadcast.sdk.api.model.S3StreamStopResponse;
+import com.perchlive.broadcast.sdk.api.model.json.GsonHelper;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.http.POST;

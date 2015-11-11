@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import static pro.dbro.perchbroadcast.AndroidUtil.isKitKat;
+import static com.perchlive.broadcast.AndroidUtil.isKitKat;
 
 /**
  * @hide

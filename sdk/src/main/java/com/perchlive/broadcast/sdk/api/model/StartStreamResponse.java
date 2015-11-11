@@ -1,4 +1,4 @@
-package pro.dbro.perchbroadcast.sdk.api.model;
+package com.perchlive.broadcast.sdk.api.model;
 
 import android.support.annotation.NonNull;
 

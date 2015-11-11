@@ -1,4 +1,4 @@
-package pro.dbro.perchbroadcast;
+package com.perchlive.broadcast.sdk;
 
 import android.os.Build;
 
