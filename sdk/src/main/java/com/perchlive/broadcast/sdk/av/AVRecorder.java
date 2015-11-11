@@ -68,7 +68,7 @@ public class AVRecorder {
      * incoming video frames as Vertical Video, rotating
      * and cropping them for proper display.
      * <p/>
-     * This method only has effect if {@link io.kickflip.sdk.av.SessionConfig#setConvertVerticalVideo(boolean)}
+     * This method only has effect if {@link SessionConfig#setConvertVerticalVideo(boolean)}
      * has been set true for the current recording session.
      */
     public void signalVerticalVideo(FullFrameRect.SCREEN_ROTATION orientation) {
