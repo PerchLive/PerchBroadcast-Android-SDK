@@ -9,11 +9,17 @@ import java.util.Map;
  */
 public class S3StreamStartResponse extends StartStreamResponse {
 
-    @NonNull public final Map<String, S3Endpoint> endpoint;
+    public static final String ENDPOINT_KEY_S3 = "S3";
+
+    @NonNull private final Map<String, S3Endpoint> endpoint;
 
     public S3StreamStartResponse(@NonNull Stream stream,
                                  @NonNull Map<String, S3Endpoint> endpoint) {
         super(stream);
         this.endpoint = endpoint;
+    }
+
+    public S3Endpoint getEndpoint() {
+        return endpoint.get(ENDPOINT_KEY_S3);
     }
 }

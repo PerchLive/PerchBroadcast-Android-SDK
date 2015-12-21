@@ -11,6 +11,12 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    productFlavors {
+        regular {}
+        mock {}
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -25,5 +31,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
 
-    compile project(':sdk')
+    regularCompile project(path: ':sdk', configuration: 'regularDebug')
+    mockCompile project(path: ':sdk', configuration: 'mockDebug')
 }

@@ -4,6 +4,10 @@
 
 [PerchBroadcast](https://github.com/PerchLive/PerchBroadcast-Android-SDK) is a lightweight Android SDK for broadcasting live video, designed to be used in conjunction with [django-broadcast](https://github.com/PerchLive/django-broadcast). This SDK is used within the [Perch](https://www.perchlive.com) Android app, and we've tried to make it as generic and modular as possible to provide for future flexibility.
 
+## TODO
+
++ Stream objects might want to specify stream url... BroadcastListener currently reports Stream *and* destinationUrl separately
+
 ## How It Works
 
 The lowest cost way to provide for one-to-many live broadcasts involves creating full HLS streams directly on the phone (via FFmpeg), and uploading the `.ts` segments and refreshing manifest `.m3u8` as soon as they become available.

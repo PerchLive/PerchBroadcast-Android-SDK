@@ -1,31 +1,33 @@
-//package com.perchlive.broadcast.sdk.av;
-//
-//import io.kickflip.sdk.api.json.Stream;
-//import io.kickflip.sdk.exception.KickflipException;
-//
-///**
-// * Provides callbacks for the major lifecycle benchmarks of a Broadcast.
-// */
-//public interface BroadcastListener {
-//    /**
-//     * The broadcast has started, and is currently buffering.
-//     */
-//    public void onBroadcastStart();
-//
-//    /**
-//     * The broadcast is fully buffered and available. This is a good time to share the broadcast.
-//     *
-//     * @param stream the {@link io.kickflip.sdk.api.json.Stream} representing this broadcast.
-//     */
-//    public void onBroadcastLive(Stream stream);
-//
-//    /**
-//     * The broadcast has ended.
-//     */
-//    public void onBroadcastStop();
-//
-//    /**
-//     * An error occurred.
-//     */
-//    public void onBroadcastError(KickflipException error);
-//}
+package com.perchlive.broadcast.sdk.av;
+
+import android.support.annotation.NonNull;
+
+import com.perchlive.broadcast.sdk.api.model.Stream;
+
+/**
+ * Provides callbacks for the major lifecycle benchmarks of a Broadcast.
+ */
+public interface BroadcastListener {
+    /**
+     * The broadcast has started, and is currently buffering.
+     */
+    void onBroadcastStart();
+
+    /**
+     * The broadcast is fully buffered and available. This is a good time to share the broadcast.
+     *
+     * @param stream the {@link Stream} representing this broadcast.
+     */
+    void onBroadcastLive(@NonNull Stream stream,
+                         @NonNull String destinationUrl);
+
+    /**
+     * The broadcast has ended.
+     */
+    void onBroadcastStop();
+
+    /**
+     * An error occurred.
+     */
+    void onBroadcastError(@NonNull Throwable error);
+}

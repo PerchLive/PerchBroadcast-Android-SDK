@@ -35,6 +35,7 @@ public class SessionConfig {
         File outputDir  = new File(rootDir, mUUID.toString());
         File outputFile = new File(outputDir, String.format("kf_%d.m3u8", System.currentTimeMillis()));
         outputDir.mkdir();
+        mOutputDirectory = outputDir;
         mMuxer = FFmpegMuxer.create(outputFile.getAbsolutePath(), Muxer.Format.MPEG4);
     }
 

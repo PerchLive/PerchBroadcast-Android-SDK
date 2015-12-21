@@ -25,7 +25,7 @@ public class AVRecorder {
 
     protected CameraEncoder     mCamEncoder;
     protected MicrophoneEncoder mMicEncoder;
-    private   SessionConfig     mConfig;
+    protected SessionConfig     mConfig;
     private   boolean           mIsRecording;
 
     public AVRecorder(SessionConfig config) throws IOException {

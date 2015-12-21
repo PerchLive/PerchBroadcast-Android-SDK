@@ -21,7 +21,7 @@ import timber.log.Timber;
  * A fragment used to record audio / video. Before showing your application
  * must have been granted camera & record audio permission.
  */
-public class AVRecoderFragment extends Fragment implements View.OnClickListener {
+public class AVRecorderFragment extends Fragment implements View.OnClickListener {
 
     ImageButton  cameraFlipperButton;
     Button       recordButton;
@@ -29,7 +29,7 @@ public class AVRecoderFragment extends Fragment implements View.OnClickListener 
 
     protected AVRecorder avRecorder;
 
-    public AVRecoderFragment() {
+    public AVRecorderFragment() {
         // Required empty public constructor
     }
 

@@ -1,4 +1,4 @@
-package com.perchlive.broadcast;
+package com.perchlive.broadcast.sdk;
 
 import com.google.gson.Gson;
 
@@ -79,7 +79,7 @@ public class ApiResponseDeserializationTests {
         assertEquals(response.stream.startDate, startDate);
 
         // Assert Endpoint attributes
-        S3Endpoint deserializedS3Endpoint = response.endpoint.get("S3");
+        S3Endpoint deserializedS3Endpoint = response.getEndpoint();
         assertEquals(deserializedS3Endpoint.awsAccessKeyId, ENDPOINT_AWS_ACCESS_KEY_ID);
         assertEquals(deserializedS3Endpoint.awsSecretAccessKey, ENDPOINT_AWS_SECRET_ACCESS_KEY);
         assertEquals(deserializedS3Endpoint.awsSessionToken, ENDPOINT_AWS_SESSION_TOKEN);
