@@ -52,6 +52,21 @@ releases are made, you'll simply add the following to your project's `build.grad
 compile 'com.perchlive.broadcast.sdk:VERSION'
 ```
 
+## Testing
+
+The 'mock' Build Flavor allows mocking server responses, so you can test the complete streaming
+mechanism by only provisioning an S3 storage location and a Federation Token user.
+Add the following properties to `./sdk/local.properties`:
+
+```groovy
+mock_endpoint.aws_access_key_id="YOUR_AWS_ACCESS_KEY_ID"
+mock_endpoint.aws_secret_access_key="YOUR_AWS_SECRET_ACCESS_KEY"
+mock_endpoint.aws_session_token="YOUR_SESSION_TOKEN"
+mock_endpoint.s3_bucket="YOUR_BUCKET"
+mock_endpoint.s3_path="path/to/test/"
+mock_endpoint.s3_region="us-west-1"
+```
+
 ## Author
 
 * [David Brodsky](https://github.com/OnlyInAmerica)

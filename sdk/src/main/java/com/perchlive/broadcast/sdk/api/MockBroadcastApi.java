@@ -1,5 +1,6 @@
 package com.perchlive.broadcast.sdk.api;
 
+import com.perchlive.broadcast.sdk.BuildConfig;
 import com.perchlive.broadcast.sdk.api.model.S3Endpoint;
 import com.perchlive.broadcast.sdk.api.model.S3StreamStartResponse;
 import com.perchlive.broadcast.sdk.api.model.S3StreamStopResponse;
@@ -24,13 +25,13 @@ public class MockBroadcastApi implements BroadcastApi {
         Stream mockStream = new Stream("0", name, new Date());
         // TODO : Pull in mock AWS credentials, perhaps via gradle?
         S3Endpoint mockS3Endpoint = new S3Endpoint(
-                "aws_key_id",
-                "aws_secret_key",
-                "aws_session_token",
+                BuildConfig.AWS_ACCESS_KEY_ID,
+                BuildConfig.AWS_SECRET_ACCESS_KEY,
+                BuildConfig.AWS_SESSION_TOKEN,
                 3600,
-                "mock_bucket",
-                "mock",
-                "us-west-1");
+                BuildConfig.S3_BUCKET,
+                BuildConfig.S3_PATH,
+                BuildConfig.S3_REGION);
         HashMap<String, S3Endpoint> mockEndpoints = new HashMap<>();
         mockEndpoints.put(S3StreamStartResponse.ENDPOINT_KEY_S3, mockS3Endpoint);
         final S3StreamStartResponse mockStartResponse = new S3StreamStartResponse(mockStream, mockEndpoints);

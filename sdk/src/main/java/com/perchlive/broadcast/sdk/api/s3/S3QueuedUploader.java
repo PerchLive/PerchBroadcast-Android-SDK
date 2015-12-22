@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.BasicSessionCredentials;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferState;
@@ -47,16 +47,19 @@ public class S3QueuedUploader implements TransferListener {
     public synchronized void provideCredentials(@NonNull String bucket,
                                                 @NonNull String bucketPath,
                                                 @NonNull String awsKey,
-                                                @NonNull String awsSecret) {
+                                                @NonNull String awsSecret,
+                                                @NonNull String awsSessionToken) {
 
         if (hasCredentials()) {
             Timber.w("Credentials already provided");
             return;
         }
 
+        Timber.d("Credentials provided");
+
         this.bucket = bucket;
         this.bucketPath = bucketPath;
-        this.credentials = new BasicAWSCredentials(awsKey, awsSecret);
+        this.credentials = new BasicSessionCredentials(awsKey, awsSecret, awsSessionToken);
         this.s3 = new AmazonS3Client(credentials);
         this.transferUtility = new TransferUtility(s3, context);
 
@@ -68,7 +71,7 @@ public class S3QueuedUploader implements TransferListener {
                                          ObjectMetadata objectMetadata) {
 
         if (hasCredentials()) {
-            uploadFile(key, file, objectMetadata);
+            uploadFile(key, file, objectMetadata != null ? objectMetadata : new ObjectMetadata());
         } else {
             mUploadQueue.add(new QueuedUpload(key, file, objectMetadata));
         }
@@ -80,7 +83,7 @@ public class S3QueuedUploader implements TransferListener {
 
     /**
      * @param key      the S3 Key. Note that the value provided as 'bucketPath' in
-     *                 {@link #provideCredentials(String, String, String, String)}
+     *                 {@link #provideCredentials(String, String, String, String, String)}
      *                 will be prepended to this value
      * @param contents the file contents to upload
      * @param metadata any additional metadata, like caching headers
@@ -96,9 +99,12 @@ public class S3QueuedUploader implements TransferListener {
                 metadata
         );
         // TODO: destination URL via S3 SDK?
-        String destinationUrl = String.format("https://s3.amazonaws.com/%s/%s", bucket, absoluteKey);
+        String destinationUrl = String.format("https://%s.s3.amazonaws.com/%s", bucket, absoluteKey);
         activeUploadMap.put(observer.getId(), new ActiveUpload(contents, destinationUrl));
         observer.setTransferListener(this);
+        Timber.d("Beginning upload of %s to %s",
+                contents.getAbsolutePath(),
+                destinationUrl);
     }
 
     private void executeQueuedUploads() {
@@ -113,7 +119,6 @@ public class S3QueuedUploader implements TransferListener {
 
     @Override
     public void onStateChanged(int id, TransferState state) {
-        Timber.d("Transfer %d state %s", id, state.name());
 
         if (listener == null) return;
 
@@ -123,6 +128,8 @@ public class S3QueuedUploader implements TransferListener {
             Timber.w("No ActiveUpload associated with transfer id %d. Cannot notify listener", id);
             return;
         }
+
+        Timber.d("Transfer %s state %s", upload.file.getName(), state.name());
 
         switch (state) {
             case IN_PROGRESS:

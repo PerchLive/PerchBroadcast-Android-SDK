@@ -62,6 +62,7 @@ public class BroadcastFragment extends Fragment implements AdapterView.OnItemSel
             if (sBroadcaster.isRecording()) {
                 sBroadcaster.stopRecording();
                 hideLiveBanner();
+                v.setBackgroundResource(R.drawable.red_dot);
             } else {
                 sBroadcaster.startRecording();
                 //stopMonitoringOrientation();

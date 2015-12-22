@@ -10,13 +10,41 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+
+        // MockBroadcastApi Response Values
+        def aws_access_key_id = ""
+        def aws_secret_access_key = ""
+        def aws_session_token = ""
+        def s3_bucket = ""
+        def s3_path = ""
+        def s3_region = ""
+
+        def properties_file = project.file('local.properties')
+        if (properties_file.exists()) {
+            Properties properties = new Properties()
+            properties.load(properties_file.newDataInputStream())
+            aws_access_key_id = properties.getProperty('mock_endpoint.aws_access_key_id')
+            aws_secret_access_key = properties.getProperty('mock_endpoint.aws_secret_access_key')
+            aws_session_token = properties.getProperty('mock_endpoint.aws_session_token')
+            s3_bucket = properties.getProperty('mock_endpoint.s3_bucket')
+            s3_path = properties.getProperty('mock_endpoint.s3_path')
+            s3_region = properties.getProperty('mock_endpoint.s3_region')
+        }
+
+        buildConfigField "String", "AWS_ACCESS_KEY_ID", aws_access_key_id
+        buildConfigField "String", "AWS_SECRET_ACCESS_KEY", aws_secret_access_key
+        buildConfigField "String", "AWS_SESSION_TOKEN", aws_session_token
+        buildConfigField "String", "S3_BUCKET", s3_bucket
+        buildConfigField "String", "S3_PATH", s3_path
+        buildConfigField "String", "S3_REGION", s3_region
+
     }
 
     productFlavors {
+
         regular {
             buildConfigField "boolean", "MOCK", "false"
         }
-        // Mock API Responses
         mock {
             buildConfigField "boolean", "MOCK", "true"
         }
@@ -34,10 +62,10 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
-    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.google.code.gson:gson:2.5'
     compile 'com.jakewharton.timber:timber:4.1.0'
     compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
     compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
-    compile 'com.amazonaws:aws-android-sdk-core:2.2.7'
-    compile 'com.amazonaws:aws-android-sdk-s3:2.2.7'
+    compile 'com.amazonaws:aws-android-sdk-core:2.2.9'
+    compile 'com.amazonaws:aws-android-sdk-s3:2.2.9'
 }
