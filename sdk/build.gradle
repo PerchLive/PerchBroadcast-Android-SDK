@@ -12,12 +12,12 @@ android {
         versionName "1.0"
 
         // MockBroadcastApi Response Values
-        def aws_access_key_id = ""
-        def aws_secret_access_key = ""
-        def aws_session_token = ""
-        def s3_bucket = ""
-        def s3_path = ""
-        def s3_region = ""
+        def aws_access_key_id = "\"\""
+        def aws_secret_access_key = "\"\""
+        def aws_session_token = "\"\""
+        def s3_bucket = "\"\""
+        def s3_path = "\"\""
+        def s3_region = "\"\""
 
         def properties_file = project.file('local.properties')
         if (properties_file.exists()) {
